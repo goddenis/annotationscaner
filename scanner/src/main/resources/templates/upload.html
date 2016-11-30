@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/layouts/layout">
+
+<body>
+
+<!--<div th:if="${message}">-->
+<!--<h2 th:text="${message}"/>-->
+<!--</div>-->
+<div>
+    <th:block layout:fragment="content">
+        <h1>Upload file</h1>
+        <!--/*@thymesVar id="projectId" type="java.lang.Long"*/-->
+        <form method="POST" enctype="multipart/form-data" th:action="@{/files/{id}(id=${projectId})}">
+            <table>
+                <tr>
+                    <td>File to upload:</td>
+                    <td><input type="file" name="file"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Upload"/></td>
+                </tr>
+            </table>
+        </form>
+    </th:block>
+</div>
+
+</body>
+</html>

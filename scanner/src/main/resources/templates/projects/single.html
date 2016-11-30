@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/layouts/layout">
+
+<body>
+
+<div>
+    <th:block layout:fragment="content">
+        <!--/*@thymesVar id="project" type="com.xrm.domain.Project"*/-->
+        <h1><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Project: <span th:text="${project.name}">Prj</span></h1>
+        <h2>File name: <span th:text="${project.getFileName()}">File name</span></h2>
+        <h3>Change sets:</h3>
+
+        <div th:each="cs : ${project.changeSets}">
+            <h4> <span class="glyphicon glyphicon-tags" ></span>&nbsp;&nbsp;Id: <span th:text="${cs.id}"> id </span>
+                Date: <span th:text="${cs.getDate()}"></span>
+                CheckSum <span th:text="${cs.getFileHash()}"></span>
+
+            </h4>
+            <div th:each="u : ${cs.getProjectUpdates()}">
+                <table class="table">
+                    <tr>
+                        <td th:text="${u.getClassName() }">Date</td>
+                        <td th:text="${u.getDate()}">Date</td>
+                        <td th:text="${u.getAuthor()}">Date</td>
+                        <td th:text="${u.getDescription()}">Date</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+        <td><a href="#" th:href="@{/files/{id}(id=${project.getId()} )}">Upload</a></td>
+    </th:block>
+</div>
+
+</body>
+</html>

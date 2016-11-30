@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/layouts/layout">
+<body>
+
+<!--/*@thymesVar id="message" type="java.lang.String"*/-->
+<!--/*@thymesVar id="project" type="com.xrm.domain.Project"*/-->
+<th:block layout:fragment="content">
+    <div th:if="${message}">
+        <h2 th:text="${message}"/>
+    </div>
+
+    <div th:if="${project}">
+        <h2 th:text="${project}"/>
+    </div>
+</th:block>
+</body>
+</html>
